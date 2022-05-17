@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const connect = () => {
 
     
-    const url = "mongodb://localhost:27017/userdetails";
+    const url = "mongodb+srv://surajsah97:Surajsah9717@cluster0.87fzj.mongodb.net/user?retryWrites=true&w=majority";
     mongoose.connect(url, {
         useNewUrlParser: true,
         // useFindAndModify: true,

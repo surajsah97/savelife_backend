@@ -12,6 +12,11 @@ for (let routes in router){
             require(`./Routers/${router[routes].split(".")[0]}`)[router[routes].split(".")[1]](req,res,next)
         })
         }
+        else{
+            route.get(routeLoc,(req,res,next)=>{
+                require(`./Routers/${router[routes].split(".")[0]}`)[router[routes].split(".")[1]](req,res,next)
+            })
+        }
     }
     else if (method==="PUT"){
         route.put(routeLoc,(req,res,next)=>{
