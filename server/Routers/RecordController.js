@@ -8,9 +8,9 @@ module.exports={
             const status=req.body.status?req.body.status:"inactive"
            console.log(caseNumber);
             if(caseNumber){
-                // let check=await Record.find({caseNumber:caseNumber})
-                // console.log({check});
-                // if(!check){
+                let check=await Record.findOne({caseNumber:caseNumber})
+                console.log({check});
+                if(!check){
                     let createRec=await Record.create({caseNumber,caseOwner:owner,dbCount1:count1,dbCount2:count2,dbCount3:count3,variable:date,project:project,status:status})
                     console.log({createRec});
                     if(createRec){
@@ -19,7 +19,7 @@ module.exports={
                             status:"SUCCESS",
                             data:createRec
                         })
-                    // }
+                    }
                 }
                 else{
                     res.json({
@@ -49,14 +49,12 @@ module.exports={
         console.log(req.body);
         try{
             const data=await Record.find()
-            if(data.length>0){
             console.log({data});
             res.json({
                 statusCode:200,
                 status:"SUCCESS",
                 data:data
             })
-        }
 
         }
         catch(err){
